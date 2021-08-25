@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+:root{
+  --radiusCelula: 10%;
+  --x: #f44336;
+  --o: #2196f3;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+body{
+  display: grid;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+  font-family: sans-serif;
+  height: 100vh;
+  background-color: #eee;
+}
+
+.titulo{
+  text-align: center;
+  font-size: 2rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.tabuleiro{
+  display: grid;
+  grid-template-columns: repeat(3, 180px);
+  grid-template-rows: repeat(3, 130px);
+  /* grid-template-columns: 200px 200px 200px; */
+  /* grid-template-rows: 150px 150px 150px; */
+  /* gap os espaços entre os elementos */
+  gap: 0.5rem;
+}
+.tabuleiro.fim-de-jogo{
+  opacity: 0.8;
+}
+
+.celula{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  border-radius: 2px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00000066;
+
+  cursor: pointer;
+}
+.celula:first-child{
+  border-top-left-radius: var(--radiusCelula);
+}
+.celula:nth-child(3){
+  border-top-right-radius: var(--radiusCelula);
+}
+.celula:nth-child(7){
+  border-bottom-left-radius: var(--radiusCelula);
+}
+.celula:nth-child(9){
+  border-bottom-right-radius: var(--radiusCelula);
+}
+.celula.X{
+  background-color: var(--x);
+}
+.celula.O{
+  background-color: var(--o);
+}
+.celula.O, .celula.X, .fim-de-jogo .celula{
+  cursor: not-allowed;
+}
+.celula:not(.O):not(.X):hover{
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: linear 0.2s;
+}
+
+.rodape{
+  text-align: center;
+}
+.titulo-rodape{
+  margin: 1rem;
+  color: #555;
+}
+.ganhador.X{
+  color: var(--x);
+}
+.ganhador.O{
+  color: var(--o);
+}
+.ganhador.Empate{
+  color: #777;
+}
+.botao-reiniciar{
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background-color: #4caf50;
 }
