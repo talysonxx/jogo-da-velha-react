@@ -8,24 +8,27 @@ function App() {
   
   const tabuleiroVazio = Array(9).fill('')
   const [tabuleiro, setTabuleiro] = useState(tabuleiroVazio)
-  const [jogadorAtual, setJogadorAtaul] = useState('X')
+  const [jogadorAtual, setJogadorAtual] = useState(gerarJogadorAleatorio)
   const [ganhador, setGanhador] = useState('')
   
   // sempre que o array tabuleiro atualizar, chame a funcao
   useEffect(verificarGanhador, [tabuleiro])
   
+  function gerarJogadorAleatorio(){
+    const jogadroAleatorio = Math.floor(Math.random() * 2)
+    if(jogadroAleatorio === 0) return 'O'
+    if(jogadroAleatorio === 1) return 'X'
+  }
+
   function cliqueCelula(index){
     if(tabuleiro[index] !== '') return null
-
-    if(ganhador){
-      alert('Recomece o jogo!')
-      return null
-    }
+    if(ganhador) return null
 
     setTabuleiro(tabuleiro.map((item, itemIndex) => (
       itemIndex === index ? jogadorAtual : item
     )))
-    setJogadorAtaul(jogadorAtual === 'X' ? 'O' : 'X')
+
+    setJogadorAtual(jogadorAtual === 'X' ? 'O' : 'X')
   }
   function verificarGanhador(){
     // 8 possibilidades de ganhar
@@ -60,10 +63,15 @@ function App() {
     })
   }
   function verificarEmpate(){
-    if(tabuleiro.every(n => n !== '')) setGanhador('Empatou!')
+    if(tabuleiro.every(n => n !== '')) setGanhador('E')
   }
   function reiniciarJogo(){
-    setJogadorAtaul(ganhador)
+    if(ganhador === 'E'){
+      setJogadorAtual(gerarJogadorAleatorio)
+    }else{
+      setJogadorAtual(ganhador)
+    }
+
     setGanhador('')
     setTabuleiro(tabuleiroVazio)
   }
@@ -88,9 +96,8 @@ function App() {
           <h2
           className='titulo-rodape'>
             <span
-              className={`ganhador ${ganhador}`}>{ganhador}
-            </span>
-              {`${ganhador !== 'Empatou!' ? ' venceu!' : ''}`}
+              className={`ganhador ${ganhador}`}>{ganhador !== 'E' ? ganhador : ''} </span>
+              {ganhador !== 'E' ? `venceu!` : 'Empatou!'}
           </h2>
 
           <button className='botao-reiniciar' onClick={reiniciarJogo}>Recomeçar o jogo!</button>
