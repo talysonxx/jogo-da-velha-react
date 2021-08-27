@@ -10,6 +10,23 @@ function App() {
   const [tabuleiro, setTabuleiro] = useState(tabuleiroVazio)
   const [jogadorAtual, setJogadorAtual] = useState(gerarJogadorAleatorio)
   const [ganhador, setGanhador] = useState('')
+
+  // dois jogadores
+  // const objetoJogadores = [
+  //   {
+  //     jogador: '',
+  //     pontos: 0,
+  //     simbolo: ''
+  //   },
+  //   {
+  //     jogador: '',
+  //     pontos: 0,
+  //     simbolo: ''
+  //   }
+  // ]
+  // const [jogadores, setJogadores] = useState(objetoJogadores)
+  // const [doisJogadores, setDoisJogadores] = useState(true)
+  // const [temJogadores, setTemJogadores] = useState(false)
   
   // sempre que o array tabuleiro atualizar, chame a funcao
   useEffect(verificarGanhador, [tabuleiro])
@@ -76,9 +93,36 @@ function App() {
     setTabuleiro(tabuleiroVazio)
   }
 
+  // function adicionarJogadores(){
+  //   setDoisJogadores(false)
+  //   let jogadorUm = ''
+  //   let jogadorDois = ''
+  //   while(jogadorUm === ''){
+  //     jogadorUm = window.prompt('Jogador 1:')
+  //   }
+  //   while(jogadorDois === ''){
+  //     jogadorDois = window.prompt('Jogador 2:')
+  //   }
+
+  //   if(jogadorUm === null && jogadorDois === null){
+  //     setDoisJogadores({jogador: 'Jogador 1', pontos: 0, simbolo: ''}, {jogador: 'Jogador 2', pontos: 0, simbolo: ''})
+  //   }else if(jogadorUm === null && jogadorDois !== null){
+  //     setDoisJogadores({jogador: 'Jogador 1', pontos: 0, simbolo: ''}, {jogador: jogadorDois, pontos: 0, simbolo: ''})
+  //   }else{
+  //     setDoisJogadores({jogador: jogadorUm, pontos: 0, simbolo: ''}, {jogador: 'Jogador 2', pontos: 0, simbolo: ''})
+  //   }
+  // }
+
   return (
     <main>
-      <h1 className='titulo'>Jogo da Velha</h1>
+      {/* {doisJogadores &&
+        <div>
+        <h3>Gostaria de adicionar jogadores?</h3>
+        <button onClick={adicionarJogadores}>Sim</button>
+        <button onClick={() => setDoisJogadores(false)}>Não</button>
+      </div>} */}
+
+      <h1 className='titulo'>{`Jogo da Velha - vez de ${jogadorAtual}`}</h1>
 
       <div className={`tabuleiro ${ganhador ? 'fim-de-jogo' : ''} `}>
         {tabuleiro.map((item, index) => (
