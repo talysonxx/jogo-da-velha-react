@@ -2,7 +2,19 @@
 
 ### Principal fonte de conteúdo
 
-* [Lucas Caton]([CRIANDO UM JOGO DA VELHA COM REACT - YouTube](https://www.youtube.com/watch?v=kFXDcaUcOto))
+* [Lucas Caton](https://www.youtube.com/watch?v=kFXDcaUcOto)
+
+### Instalação
+
+#### `npm i`
+
+Instala as dependências
+
+### Depois, rode o projeto com
+
+#### `npm start`
+
+Irá abrir uma guia na URL [http://localhost:3000/](http://localhost:3000/)
 
 ###### Meus **contatos**
 
