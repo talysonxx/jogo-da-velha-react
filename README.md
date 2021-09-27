@@ -1,4 +1,8 @@
-## Jogo da velha com reactjs
+# Jogo da velha com ReactJS
+
+### Principal fonte de conteúdo
+
+* [Lucas Caton]([CRIANDO UM JOGO DA VELHA COM REACT - YouTube](https://www.youtube.com/watch?v=kFXDcaUcOto))
 
 ###### Meus **contatos**
 
